@@ -9,7 +9,6 @@ from torch.nn.modules.transformer import (
     _get_activation_fn,
     Module,
     Tensor,
-    Optional,
     MultiheadAttention,
     Linear,
     Dropout,
@@ -321,9 +320,9 @@ class TransformerEncoderLayer(Module):
     def forward(
         self,
         src: Tensor,
-        src_mask: Optional[Tensor] = None,
-        src_key_padding_mask: Optional[Tensor] = None,
-        att_src: Optional[Tensor] = None,
+        src_mask: tp.Optional[Tensor] = None,
+        src_key_padding_mask: tp.Optional[Tensor] = None,
+        att_src: tp.Optional[Tensor] = None,
     ) -> Tensor:
         r"""Pass the input through the encoder layer.
 
@@ -545,7 +544,7 @@ class PerFeatureEncoderLayer(Module):
         self,
         src: Tensor,  # shape of (batch_size, num_items, num_features, d_model) if batch_first else (num_items, num_features, batch_size, d_model)
         single_eval_pos: int,
-        att_src: Optional[Tensor] = None,
+        att_src: tp.Optional[Tensor] = None,
     ) -> Tensor:
         r"""Pass the input through the encoder layer.
 

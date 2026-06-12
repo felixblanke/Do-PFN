@@ -326,7 +326,7 @@ def load_semi_real_interventional_datasets():
     datasets_to_return = []
     for i in tqdm.tqdm(range(len(semi_real_datasets)), desc=f'Semi-Real Benchmarks'):
         dataset = semi_real_datasets[i]
-        data_path = Path('data/semi_real_new') / dataset
+        data_path = Path('data/semi_real') / dataset
 
         with open(str(data_path) + f'/{dataset}.pkl', 'rb') as f:
             ds = pkl.load(f)
@@ -349,7 +349,7 @@ def load_prior_sampling_casestudies(n_max: int = 10):
     casestudy_benchmarks = []
 
     for casestudy in synthetic_casestudies:
-        data_path = Path('/work/dlclarge1/robertsj-dopfn/Do-PFN/data/prior_new') / casestudy
+        data_path = Path('data/prior_sampling') / casestudy
         for i in tqdm.tqdm(range(1, n_max+1), desc=f'{casestudy} Benchmarks'):
             with open(str(data_path) + f'/{casestudy}_{i}.pkl', 'rb') as f:
                 casestudy_benchmarks.append(pkl.load(f))
