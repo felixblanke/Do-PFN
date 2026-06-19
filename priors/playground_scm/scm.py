@@ -2,7 +2,7 @@
 This file defines all functionality for Structural Causal Models.
 """
 
-from typing import Tuple, Any, Callable, Dict, List
+from typing import Tuple, Any, Callable, Dict, List, Literal
 import networkx as nx
 import matplotlib.pyplot as plt
 import random
@@ -33,6 +33,11 @@ class StructuralCausalModel:
     representing the distribution and it's kwargs as a tuple."""
     saved_functions: Dict[str, Tuple[Callable, dict]]
     """Contains a backup of the function of each endogenous variable to be able to restore them after intervention."""
+
+    t_key: torch.Tensor
+    y_key: torch.Tensor
+    binary_strategy: Literal["mean", "extreme"]
+
     def __init__(self):
         self.endogenous_vars = {}
         self.exogenous_vars = {}
